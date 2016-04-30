@@ -23,7 +23,7 @@ public class BackgroundLoop : MonoBehaviour {
 		// Loop through and spit out repeated tiles
 		for (int i = 1, l = (int)Mathf.Round(sprite.bounds.size.x + 1); i < l; i++) {
 			child = Instantiate(childPrefab) as GameObject;
-			child.transform.position = transform.position + (new Vector3(spriteSize.x - 1, 0, 0) * i);
+			child.transform.position = transform.position + (new Vector3(spriteSize.x, 0, 0) * i);
 			child.transform.parent = transform;
 		}
 
