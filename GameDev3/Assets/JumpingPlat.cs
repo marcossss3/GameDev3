@@ -25,6 +25,7 @@ public class JumpingPlat : MonoBehaviour {
 
 			//Animator playerAnimator = collision.gameObject.GetComponent<Animator> ();
 			collision.gameObject.GetComponent<PlayerControl>().grounded = false;
+			playerAnimator.SetBool ("playerFalling", false);
 			playerAnimator.SetBool ("playerAirborne", true);
 			
 		}
