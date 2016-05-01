@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Diagnostics;
 
 public class PlayerControl : MonoBehaviour {
 
 	private Rigidbody2D rb;
 	private bool grounded, interact, keysEnabled, invincible;
+	private float initialX = -16.0f;
+	private Stopwatch stopWatch;
 
 	public Animator anim;
 	public float speed = 4.0f;
@@ -20,6 +23,9 @@ public class PlayerControl : MonoBehaviour {
 		keysEnabled = true;
 		grounded = true;
 
+		stopWatch = new Stopwatch();
+		stopWatch.Start();
+
 	}
 
 	void Update() {
@@ -34,7 +40,6 @@ public class PlayerControl : MonoBehaviour {
 
 			if (rb.velocity.y < 0 && !grounded) {
 				anim.SetBool ("playerAirborne", false);
-				Debug.Log ("now");
 				anim.SetBool ("playerFalling", true);
 			}
 
@@ -84,6 +89,15 @@ public class PlayerControl : MonoBehaviour {
 			anim.SetBool ("playerAirborne", false);
 
 		}
+
+	}
+
+	public float GetAverageSpeed(){
+
+		if (transform.position.x > (initialX+0.5f))
+			return (transform.position.x - (initialX)) / (stopWatch.ElapsedMilliseconds / 1000);
+		else
+			return 0;
 
 	}
 
