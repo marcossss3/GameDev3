@@ -6,14 +6,17 @@ public class PlayerControl : MonoBehaviour {
 
 	private Rigidbody2D rb;
 	private bool grounded, interact, keysEnabled, invincible;
+
 	private float initialX = -16.0f;
+	private float invincibleTimeAfterHurt = 2;
+
 	private Stopwatch stopWatch;
+
 
 	public Animator anim;
 	public float speed = 4.0f;
 	public float jumpPower = 350f;
 
-	float jumpTime, jumpDelay = 0.3f;
 	bool jumped;
 
 	void Start() {
@@ -98,6 +101,57 @@ public class PlayerControl : MonoBehaviour {
 			return (transform.position.x - (initialX)) / (stopWatch.ElapsedMilliseconds / 1000);
 		else
 			return 0;
+
+	}
+
+	public void resetAnimations() {
+
+		anim.SetBool ("playerRunning", false);
+		anim.SetBool ("playerFalling", false);
+		anim.SetBool ("playerAirborne", false);
+		anim.SetBool ("playerShooting", false);
+
+	}
+
+	public void Respawn (Vector2 spawn) {
+
+		transform.position = spawn;
+
+	}
+
+	public void setKeysEnabled(bool boolean){
+
+		keysEnabled = boolean;
+
+	}
+
+	private void TriggerHurt(float hurtTime) {
+
+		StartCoroutine (HurtBlinker(hurtTime));
+
+	}
+
+	public void Hurt() {
+
+		TriggerHurt (invincibleTimeAfterHurt);
+
+	}
+
+	IEnumerator HurtBlinker(float hurtTime) {
+
+		invincible = true;
+
+		// Dizzy to just blink
+		yield return new WaitForSeconds(0.1F);
+		anim.SetBool("Blink", true);
+
+		// Waiting for invincibility to end
+		yield return new WaitForSeconds(hurtTime);
+
+		// Stop blinking animation and re-enable collision
+		anim.SetBool ("Blink", false);
+
+		invincible = false;
 
 	}
 
