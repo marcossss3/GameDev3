@@ -156,4 +156,7 @@ public class PlayerControl : MonoBehaviour {
 
 	}
 
+	public void knockBack(){
+		rb.AddForce(new Vector2(-5, 1));
+	}
 }
