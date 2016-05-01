@@ -29,6 +29,8 @@ public class skeleton : MonoBehaviour {
 		}
 	}
 
+
+
 	public void knockPlayer(){
 		player.knockBack ();
 	}
