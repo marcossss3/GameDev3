@@ -21,6 +21,7 @@ public class JumpingPlat : MonoBehaviour {
 			springAnimator.SetTrigger("move");
 
 			collision.rigidbody.velocity = new Vector2 (collision.rigidbody.velocity.x, 10.0f);
+			//collision.rigidbody.AddForce (transform.up * 350);
 
 			//Animator playerAnimator = collision.gameObject.GetComponent<Animator> ();
 			collision.gameObject.GetComponent<PlayerControl>().grounded = false;
