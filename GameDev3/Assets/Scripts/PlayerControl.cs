@@ -5,7 +5,7 @@ using System.Diagnostics;
 public class PlayerControl : MonoBehaviour {
 
 	private Rigidbody2D rb;
-	private bool grounded, interact, keysEnabled, invincible;
+	private bool interact, keysEnabled, invincible;
 	public bool grounded;
 
 	private float initialX = -16.0f;
