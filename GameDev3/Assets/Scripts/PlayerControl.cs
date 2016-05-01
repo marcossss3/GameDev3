@@ -72,19 +72,21 @@ public class PlayerControl : MonoBehaviour {
 			}
 
 			if (Input.GetMouseButtonDown (0) && grounded && !anim.GetBool("playerRunning")) {
+				
+				if (camera.ScreenToWorldPoint (Input.mousePosition).x > rb.position.x)
+					transform.eulerAngles = new Vector2 (0, 0);
+
+				if (camera.ScreenToWorldPoint (Input.mousePosition).x < rb.position.x)
+					transform.eulerAngles = new Vector2 (0, 180);
+				
 				anim.SetBool ("playerShooting", true);
 				Shoot ();
+
 			}
 
 			if (Input.GetKeyUp (KeyCode.D) || Input.GetKeyUp (KeyCode.A)) {
 				anim.SetBool ("playerRunning", false);
 			}
-
-			if (camera.ScreenToWorldPoint (Input.mousePosition).x > rb.position.x)
-				transform.eulerAngles = new Vector2 (0, 0);
-
-			if (camera.ScreenToWorldPoint (Input.mousePosition).x < rb.position.x)
-				transform.eulerAngles = new Vector2 (0, 180);
 
 		}
 
