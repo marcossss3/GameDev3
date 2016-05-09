@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class PlayerControl : MonoBehaviour {
 
 	private Rigidbody2D rb;
-	private bool interact, keysEnabled, invincible;
+	private bool interact, keysEnabled;
+	public bool invincible;
 
 	public bool grounded;
 	public AudioSource pistolSound;
