@@ -56,6 +56,16 @@ public class PlayerControl : MonoBehaviour {
 		}
 	}
 
+	public int Ammo {
+		get {
+			return ammo;
+		}
+		set {
+			ammo = value;
+			ammoBar.fillAmount = ((float)ammo / (float)maxAmmo);
+		}
+	}
+
 	void Update() {
 		
 		Movement(); //call the function every frame
@@ -210,10 +220,8 @@ public class PlayerControl : MonoBehaviour {
 
 			//bulletInstance.GetComponent<Rigidbody2D> ().velocity = new Vector2 (10.0f, bulletInstance.GetComponent<Rigidbody2D> ().velocity.y + 0.2f);
 
-			ammo--;
-			ammoBar.fillAmount = ((float)ammo / (float)maxAmmo);
+			Ammo--;
 		}
-
 	}
 
 	public IEnumerator knockBack(){

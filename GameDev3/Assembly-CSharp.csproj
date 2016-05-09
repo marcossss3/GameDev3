@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\PlayerControl.cs" />
      <Compile Include="Assets\Scripts\ReCalcCube.cs" />
      <Compile Include="Assets\Scripts\ScreenFader.cs" />
+     <Compile Include="Assets\ammo.cs" />
      <Compile Include="Assets\skeleton.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
