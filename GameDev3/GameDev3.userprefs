@@ -1,9 +1,9 @@
-﻿<Properties StartupItem="Assembly-CSharp.csproj">
+﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerControl.cs">
     <Files>
-      <File FileName="Assets\Scripts\PlayerControl.cs" Line="187" Column="5" />
-      <File FileName="Assets\skeleton.cs" Line="1" Column="1" />
+      <File FileName="Assets\skeleton.cs" Line="34" Column="64" />
+      <File FileName="Assets\Scripts\PlayerControl.cs" Line="173" Column="2" />
       <File FileName="Assets\JumpingPlat.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ReCalcCube.cs" Line="1" Column="1" />
     </Files>

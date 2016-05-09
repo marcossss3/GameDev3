@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Diagnostics;
+using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour {
 
@@ -25,6 +26,8 @@ public class PlayerControl : MonoBehaviour {
 
 	bool jumped;
 	bool hurt;
+	public Image healthBar;
+	private float health = 1f; 	//from 0 to 1 percernt.
 
 	void Start() {
 		
@@ -36,6 +39,16 @@ public class PlayerControl : MonoBehaviour {
 		stopWatch = new Stopwatch();
 		stopWatch.Start();
 
+	}
+
+	public float Health {
+		get {
+			return health;
+		}
+		set {
+			health = value;
+			healthBar.fillAmount = value;
+		}
 	}
 
 	void Update() {
@@ -153,6 +166,11 @@ public class PlayerControl : MonoBehaviour {
 
 	}
 
+	public void Hurt(float healthPerCent, float hurtTime) {
+		TriggerHurt (hurtTime);
+		Health = Health + healthPerCent;
+	}
+
 	IEnumerator HurtBlinker(float hurtTime) {
 
 		invincible = true;
@@ -193,7 +211,7 @@ public class PlayerControl : MonoBehaviour {
 
 	public IEnumerator knockBack(){
 		if (!invincible) {
-			TriggerHurt (1f);
+			Hurt(-0.1f, 1f);//Amount of damage to health in percentage.
 			rb.velocity = new Vector2 (-10f, rb.velocity.y);
 			yield return new WaitForSeconds (0.5f);
 			rb.velocity = new Vector2 (0, rb.velocity.y);
