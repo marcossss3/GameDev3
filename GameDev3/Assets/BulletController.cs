@@ -3,8 +3,12 @@ using System.Collections;
 
 public class BulletController : MonoBehaviour {
 
+	private bool wasted;
+
 	// Use this for initialization
 	void Start () {
+
+
 	
 	}
 	
@@ -15,7 +19,19 @@ public class BulletController : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collision) {
 
-		if (collision.gameObject.tag == "Skeleton") {
+		if (collision.gameObject.tag == "Ground") {
+
+			wasted = true;
+
+		}
+
+		if (collision.gameObject.tag != "Ground" && wasted ) {
+
+			Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+
+		}
+
+		else if (collision.gameObject.tag == "Skeleton" && !wasted) {
 
 			if (!collision.gameObject.GetComponent<skeleton> ().dead) {
 
@@ -23,6 +39,10 @@ public class BulletController : MonoBehaviour {
 				collision.gameObject.GetComponent<Animator> ().SetBool ("defeated", true);
 				collision.gameObject.GetComponent<skeleton> ().dead = true;
 
+				Destroy (gameObject);
+
+			} else {
+				Physics2D.IgnoreCollision (collision.collider, GetComponent<Collider2D> ());
 			}
 
 		}

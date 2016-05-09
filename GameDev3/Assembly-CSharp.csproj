@@ -46,8 +46,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\BulletController.cs" />
+     <Compile Include="Assets\GameController.cs" />
      <Compile Include="Assets\JumpingPlat.cs" />
      <Compile Include="Assets\LavaController.cs" />
+     <Compile Include="Assets\RockController.cs" />
      <Compile Include="Assets\Scripts\BackgroundLoop.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\PlayerControl.cs" />
