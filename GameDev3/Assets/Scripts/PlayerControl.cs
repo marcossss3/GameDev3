@@ -6,11 +6,13 @@ public class PlayerControl : MonoBehaviour {
 
 	private Rigidbody2D rb;
 	private bool interact, keysEnabled, invincible;
+
 	public bool grounded;
+	public AudioSource pistolSound;
 
 	private float initialX = -16.0f;
 	private float invincibleTimeAfterHurt = 2;
-	private int ammo = 20;
+	private int ammo = 50;
 
 	private Stopwatch stopWatch;
 
@@ -113,7 +115,7 @@ public class PlayerControl : MonoBehaviour {
 
 	public float GetAverageSpeed(){
 
-		if (transform.position.x > (initialX+0.5f))
+		if (transform.position.x > (initialX + 0.5f) && stopWatch.ElapsedMilliseconds/1000 > 0.1f)
 			return (transform.position.x - (initialX)) / (stopWatch.ElapsedMilliseconds / 1000);
 		else
 			return 0;
@@ -172,6 +174,8 @@ public class PlayerControl : MonoBehaviour {
 	void Shoot (){
 		
 		if(ammo > 0){
+
+			pistolSound.Play ();
 
 			var pos = Input.mousePosition;
 			pos.z = transform.position.z - Camera.main.transform.position.z;

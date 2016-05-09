@@ -6,20 +6,26 @@ public class skeleton : MonoBehaviour {
 	public Animator myAnimator;
 	public GameObject player;
 
+	public bool dead = false;
+
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (myAnimator.GetBool ("walking")) {
+		
+		if (myAnimator.GetBool ("walking") && !dead) {
 			transform.Translate (Vector2.left * Time.deltaTime);
 		}
+
 	}
 
 	public void startWalking(){
+		
 		myAnimator.SetBool ("walking", true);
+
 	}
 
 	void OnCollisionEnter2D(Collision2D collision) {
@@ -28,9 +34,19 @@ public class skeleton : MonoBehaviour {
 			myAnimator.SetBool ("attack", true);
 			knockPlayer ();
 		}
+
 	}
 		
 	public void knockPlayer(){
+		
 		StartCoroutine(player.GetComponent<PlayerControl>().knockBack ());
+
 	}
+		
+	public void Die(){
+
+		Destroy (this.gameObject);
+
+	}
+
 }
