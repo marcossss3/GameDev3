@@ -24,7 +24,7 @@ public class LavaController : MonoBehaviour {
 
 		float playerAverageSpeed = pc.GetAverageSpeed ();
 
-		if (playerAverageSpeed > 0.2) {
+		if (playerAverageSpeed > 0.1) {
 			
 			rb.velocity = new Vector2 (rb.velocity.x, playerAverageSpeed / 15);
 
