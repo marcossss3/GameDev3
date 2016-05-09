@@ -31,8 +31,16 @@ public class skeleton : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D collision) {
 
 		if (collision.gameObject.tag == "Player" && !player.GetComponent<PlayerControl>().invincible) {
+
 			myAnimator.SetBool ("attack", true);
 			knockPlayer ();
+
+		}
+
+		if (collision.gameObject.tag == "Skeleton") {
+
+			Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+
 		}
 
 	}
