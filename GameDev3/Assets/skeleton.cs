@@ -4,7 +4,7 @@ using System.Collections;
 public class skeleton : MonoBehaviour {
 
 	public Animator myAnimator;
-	public PlayerControl player;
+	public GameObject player;
 
 	// Use this for initialization
 	void Start () {
@@ -26,12 +26,11 @@ public class skeleton : MonoBehaviour {
 
 		if (collision.gameObject.tag == "Player") {
 			myAnimator.SetBool ("attack", true);
+			knockPlayer ();
 		}
 	}
-
-
-
+		
 	public void knockPlayer(){
-		player.knockBack ();
+		StartCoroutine(player.GetComponent<PlayerControl>().knockBack ());
 	}
 }

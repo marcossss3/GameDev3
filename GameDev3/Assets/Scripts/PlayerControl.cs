@@ -24,6 +24,7 @@ public class PlayerControl : MonoBehaviour {
 	public Camera camera;
 
 	bool jumped;
+	bool hurt;
 
 	void Start() {
 		
@@ -190,8 +191,12 @@ public class PlayerControl : MonoBehaviour {
 
 	}
 
-	public void knockBack(){
-		rb.AddForce(new Vector2(-5, 1));
+	public IEnumerator knockBack(){
+		if (!invincible) {
+			TriggerHurt (1f);
+			rb.velocity = new Vector2 (-10f, rb.velocity.y);
+			yield return new WaitForSeconds (0.5f);
+			rb.velocity = new Vector2 (0, rb.velocity.y);
+		}
 	}
-
 }
