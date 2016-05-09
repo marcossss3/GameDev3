@@ -14,7 +14,8 @@ public class PlayerControl : MonoBehaviour {
 
 	private float initialX = -16.0f;
 	private float invincibleTimeAfterHurt = 2;
-	private int ammo = 50;
+	private int maxAmmo = 30;
+	private int ammo = 30;
 
 	private Stopwatch stopWatch;
 
@@ -29,6 +30,7 @@ public class PlayerControl : MonoBehaviour {
 
 	bool jumped;
 	bool hurt;
+	public Image ammoBar;
 	public Image healthBar;
 	private float health = 1f; 	//from 0 to 1 percernt.
 
@@ -209,7 +211,7 @@ public class PlayerControl : MonoBehaviour {
 			//bulletInstance.GetComponent<Rigidbody2D> ().velocity = new Vector2 (10.0f, bulletInstance.GetComponent<Rigidbody2D> ().velocity.y + 0.2f);
 
 			ammo--;
-
+			ammoBar.fillAmount = ((float)ammo / (float)maxAmmo);
 		}
 
 	}
