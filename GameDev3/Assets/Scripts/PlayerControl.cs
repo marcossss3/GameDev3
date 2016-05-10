@@ -52,6 +52,9 @@ public class PlayerControl : MonoBehaviour {
 			return health;
 		}
 		set {
+			if (health <= 0) {
+				return;
+			}
 			health = value;
 			healthBar.fillAmount = value;
 			if (value <= 0) {
@@ -243,6 +246,7 @@ public class PlayerControl : MonoBehaviour {
 
 	public void Die(){
 		anim.SetBool ("playerDie", true);
+		keysEnabled = false;
 		//SceneManager.LoadScene (Application.loadedLevel);
 	}
 }

@@ -25,7 +25,7 @@ public class RockController : MonoBehaviour {
 
 		if (collision.gameObject.tag == "Player") {
 
-			collision.gameObject.GetComponent<PlayerControl> ().Hurt (-0.1f, 1f);
+			collision.gameObject.GetComponent<PlayerControl> ().Hurt (-0.4f, 1f);
 
 		}
 
