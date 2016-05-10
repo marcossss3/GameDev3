@@ -53,6 +53,9 @@ public class PlayerControl : MonoBehaviour {
 		set {
 			health = value;
 			healthBar.fillAmount = value;
+			if (value <= 0) {
+				
+			}
 		}
 	}
 
@@ -231,5 +234,9 @@ public class PlayerControl : MonoBehaviour {
 			yield return new WaitForSeconds (0.5f);
 			rb.velocity = new Vector2 (0, rb.velocity.y);
 		}
+	}
+
+	public void Die(){
+		
 	}
 }
