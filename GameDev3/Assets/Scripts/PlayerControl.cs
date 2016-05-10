@@ -53,6 +53,9 @@ public class PlayerControl : MonoBehaviour {
 		set {
 			health = value;
 			healthBar.fillAmount = value;
+			if (value <= 0) {
+				
+			}
 		}
 	}
 
@@ -232,9 +235,13 @@ public class PlayerControl : MonoBehaviour {
 			rb.velocity = new Vector2 (0, rb.velocity.y);
 		}
 	}
-
+		
 	public float getHealth(){
 		return health;
+	}
+
+	public void Die(){
+		
 	}
 
 }
