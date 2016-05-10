@@ -247,6 +247,12 @@ public class PlayerControl : MonoBehaviour {
 	public void Die(){
 		anim.SetBool ("playerDie", true);
 		keysEnabled = false;
-		//SceneManager.LoadScene (Application.loadedLevel);
+		//TODO fade to black
+		StartCoroutine(returnToMenu());
+	}
+
+	public IEnumerator returnToMenu(){
+		yield return new WaitForSeconds (2f);
+		SceneManager.LoadScene ("Menu");
 	}
 }

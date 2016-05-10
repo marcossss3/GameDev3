@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\ScreenFader.cs" />
      <Compile Include="Assets\Scripts\Skeleton.cs" />
      <Compile Include="Assets\Scripts\SpawnTrigger.cs" />
+     <Compile Include="Assets\levelLoader.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
