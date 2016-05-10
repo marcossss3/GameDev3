@@ -1,24 +1,11 @@
-﻿<Properties StartupItem="Assembly-CSharp.csproj">
+﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-<<<<<<< Updated upstream
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\ammo.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RockController.cs">
     <Files>
-      <File FileName="Assets\skeleton.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerControl.cs" Line="224" Column="4" />
-      <File FileName="Assets\JumpingPlat.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ReCalcCube.cs" Line="1" Column="1" />
-      <File FileName="Assets\ammo.cs" Line="16" Column="12" />
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BulletController.cs">
-    <Files>
-      <File FileName="Assets/Scripts/PlayerControl.cs" Line="229" Column="9" />
-      <File FileName="Assets/BulletController.cs" Line="52" Column="33" />
-      <File FileName="Assets/LavaController.cs" Line="13" Column="17" />
-      <File FileName="Assets/skeleton.cs" Line="15" Column="56" />
-      <File FileName="Assets/RockController.cs" Line="26" Column="71" />
-      <File FileName="Assets/GameController.cs" Line="43" Column="36" />
-      <File FileName="Assets/SpawnTrigger.cs" Line="22" Column="121" />
->>>>>>> Stashed changes
+      <File FileName="Assets\Scripts\PlayerControl.cs" Line="98" Column="66" />
+      <File FileName="Assets\Scripts\ScreenFader.cs" Line="34" Column="22" />
+      <File FileName="Assets\Scripts\Skeleton.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\RockController.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
