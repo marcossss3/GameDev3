@@ -7,6 +7,8 @@ public class RockController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		GetComponent<Rigidbody2D> ().angularVelocity = 100.0f;
 	
 	}
 	
@@ -25,7 +27,8 @@ public class RockController : MonoBehaviour {
 
 		if (collision.gameObject.tag == "Player") {
 
-			collision.gameObject.GetComponent<PlayerControl> ().Hurt (-0.4f, 1f);
+			collision.gameObject.GetComponent<PlayerControl> ().Hurt (-0.1f, 2f);
+			Disintegrate ();
 
 		}
 

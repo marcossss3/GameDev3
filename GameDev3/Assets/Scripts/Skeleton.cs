@@ -40,7 +40,7 @@ public class Skeleton : MonoBehaviour {
 
 		}
 
-		if (collision.gameObject.tag == "Skeleton") {
+		if (collision.gameObject.tag == "Skeleton" || collision.gameObject.tag == "Ammo" || collision.gameObject.tag == "JumpingPlatform") {
 
 			Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
 

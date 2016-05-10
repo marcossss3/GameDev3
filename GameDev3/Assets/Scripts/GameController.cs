@@ -20,9 +20,14 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if ((stopWatch.ElapsedMilliseconds / 1000) % 4 == 0 && !stopRocks) {
+		float playerAverageSpeed = player.GetComponent<PlayerControl> ().GetAverageSpeed ();
+
+		float adaptiveSpawnRate = Mathf.Round( 14f / (playerAverageSpeed * 2) );
+
+		if ((stopWatch.ElapsedMilliseconds / 1000) % adaptiveSpawnRate == 0 && !stopRocks && playerAverageSpeed > 0.1) {
 			InstantiateRock ();
 			stopRocks = true;
+			UnityEngine.Debug.Log (adaptiveSpawnRate);
 			StartCoroutine(StopSpawningRocks (1));
 		}
 	
@@ -39,7 +44,7 @@ public class GameController : MonoBehaviour {
 	void InstantiateRock () {
 
 		GameObject go = Instantiate(rock,
-									new Vector2 (player.transform.position.x + 2.0f, player.transform.position.y + 3.0f),
+			new Vector2 (player.transform.position.x + Random.Range(0.0f, 2.0f), player.transform.position.y + 3.0f),
 									player.transform.rotation)
 			as GameObject;
 
