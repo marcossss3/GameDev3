@@ -4,10 +4,10 @@ using System.Diagnostics;
 
 public class GameController : MonoBehaviour {
 
-	public GameObject player, rock;
+	public GameObject player, rock, chest;
 
 	private Stopwatch stopWatch;
-	private bool stopRocks;
+	private bool stopRocks, victory;
 
 	// Use this for initialization
 	void Start () {
@@ -20,15 +20,22 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		float playerAverageSpeed = player.GetComponent<PlayerControl> ().GetAverageSpeed ();
+		if (victory) {
 
-		float adaptiveSpawnRate = Mathf.Round( 14f / (playerAverageSpeed * 2) );
 
-		if ((stopWatch.ElapsedMilliseconds / 1000) % adaptiveSpawnRate == 0 && !stopRocks && playerAverageSpeed > 0.1) {
-			InstantiateRock ();
-			stopRocks = true;
-			UnityEngine.Debug.Log (adaptiveSpawnRate);
-			StartCoroutine(StopSpawningRocks (1));
+
+		} else {
+
+			float playerAverageSpeed = player.GetComponent<PlayerControl> ().GetAverageSpeed ();
+
+			float adaptiveSpawnRate = Mathf.Round (14f / (playerAverageSpeed * 2));
+
+			if ((stopWatch.ElapsedMilliseconds / 1000) % adaptiveSpawnRate == 0 && !stopRocks && playerAverageSpeed > 0.1) {
+				InstantiateRock ();
+				stopRocks = true;
+				StartCoroutine (StopSpawningRocks (1));
+			}
+
 		}
 	
 	}
@@ -47,6 +54,12 @@ public class GameController : MonoBehaviour {
 			new Vector2 (player.transform.position.x + Random.Range(0.0f, 2.0f), player.transform.position.y + 3.0f),
 									player.transform.rotation)
 			as GameObject;
+
+	}
+
+	public void setVictory (bool boolean) {
+
+		victory = boolean;
 
 	}
 

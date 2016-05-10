@@ -15,8 +15,8 @@ public class PlayerControl : MonoBehaviour {
 
 	private float initialX = -16.0f;
 	private float invincibleTimeAfterHurt = 2;
-	private int maxAmmo = 30;
-	private int ammo = 30;
+	private int maxAmmo = 15;
+	private int ammo = 15;
 
 	private Stopwatch stopWatch;
 
@@ -234,7 +234,7 @@ public class PlayerControl : MonoBehaviour {
 	public IEnumerator knockBack(){
 		if (!invincible) {
 			Hurt(-0.1f, 1f);//Amount of damage to health in percentage.
-			rb.velocity = new Vector2 (-10f, rb.velocity.y);
+			rb.velocity = new Vector2 (-5f, rb.velocity.y);
 			yield return new WaitForSeconds (0.5f);
 			rb.velocity = new Vector2 (0, rb.velocity.y);
 		}

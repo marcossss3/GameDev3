@@ -47,6 +47,16 @@ public class Skeleton : MonoBehaviour {
 		}
 
 	}
+
+	void OnTriggerEnter2D(Collider2D collider) {
+
+		if (collider.gameObject.tag == "Boundary") {
+
+			transform.eulerAngles = new Vector2 (0, transform.eulerAngles.y + 180);
+
+		}
+
+	}
 		
 	public void knockPlayer(){
 		
