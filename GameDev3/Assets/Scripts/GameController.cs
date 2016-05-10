@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Diagnostics;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
@@ -9,11 +11,15 @@ public class GameController : MonoBehaviour {
 	private Stopwatch stopWatch;
 	private bool stopRocks, victory;
 
+	public Image victoryText;
+
 	// Use this for initialization
 	void Start () {
 
 		stopWatch = new Stopwatch();
 		stopWatch.Start();
+
+		victoryText.enabled = false;
 	
 	}
 
@@ -66,6 +72,16 @@ public class GameController : MonoBehaviour {
 	public bool getVictory () {
 
 		return victory;
+
+	}
+
+	public IEnumerator LoadEnding(){
+
+		victoryText.enabled = true;
+		yield return new WaitForSeconds(3);
+		float fadeTime = GameObject.Find ("GameController").GetComponent<ScreenFader> ().BeginFade (1);
+		yield return new WaitForSeconds (1f);
+		SceneManager.LoadScene ("Menu");
 
 	}
 

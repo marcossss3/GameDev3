@@ -19,6 +19,7 @@ public class ChestController : MonoBehaviour {
 
 		if (collision.gameObject.tag == "Player") {
 			gameController.GetComponent<GameController> ().setVictory (true);
+			StartCoroutine (gameController.GetComponent<GameController>().LoadEnding ());
 		}
 
 	}
