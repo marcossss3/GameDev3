@@ -47,6 +47,13 @@ public class BulletController : MonoBehaviour {
 
 		}
 
+		else if (collision.gameObject.tag == "Rock" && !wasted) {
+
+			collision.gameObject.GetComponent<RockController> ().Disintegrate ();
+			Destroy (gameObject);
+
+		}
+
 	}
 
 }

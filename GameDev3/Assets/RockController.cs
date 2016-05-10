@@ -3,6 +3,8 @@ using System.Collections;
 
 public class RockController : MonoBehaviour {
 
+	public GameObject fragments;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -15,7 +17,7 @@ public class RockController : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collision) {
 
-		if (collision.gameObject.tag == "Ground") {
+		if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Skeleton") {
 
 			Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
 
@@ -23,9 +25,16 @@ public class RockController : MonoBehaviour {
 
 		if (collision.gameObject.tag == "Player") {
 
-			collision.gameObject.GetComponent<PlayerControl> ().Hurt ();
+			collision.gameObject.GetComponent<PlayerControl> ().Hurt (-0.1f, 1f);
 
 		}
+
+	}
+
+	public void Disintegrate(){
+
+		Instantiate (fragments, gameObject.transform.position, gameObject.transform.rotation);
+		Destroy (gameObject);
 
 	}
 

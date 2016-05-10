@@ -4,12 +4,15 @@ using System.Collections;
 public class skeleton : MonoBehaviour {
 
 	public Animator myAnimator;
-	public GameObject player;
+
+	private GameObject player;
 
 	public bool dead = false;
 
 	// Use this for initialization
 	void Start () {
+
+		player = GameObject.FindGameObjectWithTag ("Player");
 
 	}
 	
