@@ -26,7 +26,7 @@ public class LavaController : MonoBehaviour {
 
 		if (playerAverageSpeed > 0.1) {
 			
-			rb.velocity = new Vector2 (rb.velocity.x, playerAverageSpeed / 15);
+			rb.velocity = new Vector2 (rb.velocity.x, playerAverageSpeed / 14);
 
 		}
 	
