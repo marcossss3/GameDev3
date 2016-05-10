@@ -63,4 +63,10 @@ public class GameController : MonoBehaviour {
 
 	}
 
+	public bool getVictory () {
+
+		return victory;
+
+	}
+
 }

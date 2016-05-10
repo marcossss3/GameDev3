@@ -7,7 +7,7 @@ public class LavaController : MonoBehaviour {
 	private PlayerControl pc;
 	private Transform platforms;
 
-	public GameObject player, ground;
+	public GameObject player, ground, gameController;
 
 	// Use this for initialization
 	void Start () {
@@ -24,7 +24,13 @@ public class LavaController : MonoBehaviour {
 
 		float playerAverageSpeed = pc.GetAverageSpeed ();
 
-		if (playerAverageSpeed > 0.1) {
+		if (gameController.GetComponent<GameController> ().getVictory ()) {
+
+			rb.velocity = new Vector2 (0f, 0f);
+
+		}
+
+		if (playerAverageSpeed > 0.1 && !gameController.GetComponent<GameController>().getVictory()) {
 			
 			rb.velocity = new Vector2 (rb.velocity.x, playerAverageSpeed / 14);
 
@@ -45,7 +51,7 @@ public class LavaController : MonoBehaviour {
 				if (player.transform.position.x < platforms.GetChild(i).transform.position.x) {
 					spawnPosition = new Vector2 (
 						platforms.GetChild (i - 1).transform.position.x, 
-						platforms.GetChild (i - 1).transform.position.y + 4f
+						platforms.GetChild (i - 1).transform.position.y + 5f
 					);
 					break;
 				}
@@ -55,7 +61,9 @@ public class LavaController : MonoBehaviour {
 			pc.setKeysEnabled (false);
 			pc.resetAnimations ();
 			pc.Respawn (spawnPosition);
-			pc.Hurt ();
+			pc.Hurt (-0.1f, 2.0f);
+
+			transform.position = new Vector2 (transform.position.x, transform.position.y - 0.4f);
 
 			StartCoroutine(DisableKeysTemporarily (2));
 

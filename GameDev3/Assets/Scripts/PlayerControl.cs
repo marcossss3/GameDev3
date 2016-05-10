@@ -17,6 +17,7 @@ public class PlayerControl : MonoBehaviour {
 	private float invincibleTimeAfterHurt = 2;
 	private int maxAmmo = 15;
 	private int ammo = 15;
+	private float ammoShot, ammoHit;
 
 	private Stopwatch stopWatch;
 
@@ -228,12 +229,14 @@ public class PlayerControl : MonoBehaviour {
 			//bulletInstance.GetComponent<Rigidbody2D> ().velocity = new Vector2 (10.0f, bulletInstance.GetComponent<Rigidbody2D> ().velocity.y + 0.2f);
 
 			Ammo--;
+			ammoShot++;
+
 		}
 	}
 
 	public IEnumerator knockBack(){
 		if (!invincible) {
-			Hurt(-0.1f, 1f);//Amount of damage to health in percentage.
+			Hurt(-0.2f, 1f);//Amount of damage to health in percentage.
 			rb.velocity = new Vector2 (-5f, rb.velocity.y);
 			yield return new WaitForSeconds (0.5f);
 			rb.velocity = new Vector2 (0, rb.velocity.y);
@@ -248,11 +251,35 @@ public class PlayerControl : MonoBehaviour {
 		anim.SetBool ("playerDie", true);
 		keysEnabled = false;
 		//TODO fade to black
-		StartCoroutine(returnToMenu());
+
 	}
 
 	public IEnumerator returnToMenu(){
-		yield return new WaitForSeconds (2f);
+		yield return new WaitForSeconds(3);
+		float fadeTime = GameObject.Find ("GameController").GetComponent<ScreenFader> ().BeginFade (1);
+		yield return new WaitForSeconds (1f);
 		SceneManager.LoadScene ("Menu");
 	}
+
+	public void DestroyPlayer(){
+
+		gameObject.GetComponent<SpriteRenderer> ().enabled = false;
+		gameObject.GetComponent<Rigidbody2D> ().isKinematic = true;
+		gameObject.GetComponent<Collider2D> ().enabled = false;
+		StartCoroutine(returnToMenu());
+
+	}
+
+	public void HitSuccess(){
+
+		ammoHit++;
+
+	}
+
+	public float GetAccuracy(){
+
+		return ammoHit / ammoShot;
+
+	}
+
 }
