@@ -3,12 +3,14 @@ using System.Collections;
 
 public class BulletController : MonoBehaviour {
 
+	public GameObject player;
+
 	private bool wasted;
 
 	// Use this for initialization
 	void Start () {
 
-
+		player = GameObject.FindGameObjectWithTag ("Player");
 	
 	}
 	
@@ -39,6 +41,8 @@ public class BulletController : MonoBehaviour {
 				collision.gameObject.GetComponent<Animator> ().SetBool ("defeated", true);
 				collision.gameObject.GetComponent<Skeleton> ().dead = true;
 
+				player.GetComponent<PlayerControl> ().HitSuccess ();
+
 				Destroy (gameObject);
 
 			} else {
@@ -50,6 +54,9 @@ public class BulletController : MonoBehaviour {
 		else if (collision.gameObject.tag == "Rock" && !wasted) {
 
 			collision.gameObject.GetComponent<RockController> ().Disintegrate ();
+
+			player.GetComponent<PlayerControl> ().HitSuccess ();
+
 			Destroy (gameObject);
 
 		}
