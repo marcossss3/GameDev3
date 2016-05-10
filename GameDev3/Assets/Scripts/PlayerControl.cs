@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Diagnostics;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour {
 
@@ -54,7 +55,7 @@ public class PlayerControl : MonoBehaviour {
 			health = value;
 			healthBar.fillAmount = value;
 			if (value <= 0) {
-				
+				Die ();
 			}
 		}
 	}
@@ -241,7 +242,7 @@ public class PlayerControl : MonoBehaviour {
 	}
 
 	public void Die(){
-		
+		anim.SetBool ("playerDie", true);
+		//SceneManager.LoadScene (Application.loadedLevel);
 	}
-
 }
