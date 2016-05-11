@@ -96,8 +96,13 @@ public class PlayerControl : MonoBehaviour {
 			return ammo;
 		}
 		set {
-			ammo = value;
-			ammoBar.fillAmount = ((float)ammo / (float)maxAmmo);
+			if (value > maxAmmo) {
+				ammo = maxAmmo;
+				ammoBar.fillAmount = 1f;
+			} else {
+				ammo = value;
+				ammoBar.fillAmount = ((float)ammo / (float)maxAmmo);
+			}
 		}
 	}
 
@@ -319,9 +324,10 @@ public class PlayerControl : MonoBehaviour {
 	}
 
 	public float GetAccuracy(){
-
+		if (ammoShot < 1) {
+			return 1f;
+		}
 		return ammoHit / ammoShot;
-
 	}
 
 	public void PickUpAmmo(int ammo){
