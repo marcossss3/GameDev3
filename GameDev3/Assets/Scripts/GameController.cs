@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour {
 
 	public GameObject player, rock, chest;
+	public bool rocksActivated;
 
 	private Stopwatch stopWatch;
 	private bool stopRocks, victory;
@@ -26,11 +27,7 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (victory) {
-
-
-
-		} else {
+		if (!victory && rocksActivated) {
 
 			float playerAverageSpeed = player.GetComponent<PlayerControl> ().GetAverageSpeed ();
 
