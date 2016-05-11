@@ -45,22 +45,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\ChestController.cs" />
      <Compile Include="Assets\Scripts\Ammo.cs" />
      <Compile Include="Assets\Scripts\BackgroundLoop.cs" />
      <Compile Include="Assets\Scripts\BulletController.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\ChestController.cs" />
      <Compile Include="Assets\Scripts\FragmentController.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\JumpingPlat.cs" />
      <Compile Include="Assets\Scripts\LavaController.cs" />
+     <Compile Include="Assets\Scripts\LevelLoader.cs" />
      <Compile Include="Assets\Scripts\PlayerControl.cs" />
      <Compile Include="Assets\Scripts\ReCalcCube.cs" />
      <Compile Include="Assets\Scripts\RockController.cs" />
      <Compile Include="Assets\Scripts\ScreenFader.cs" />
      <Compile Include="Assets\Scripts\Skeleton.cs" />
      <Compile Include="Assets\Scripts\SpawnTrigger.cs" />
-     <Compile Include="Assets\levelLoader.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

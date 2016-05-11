@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour {
 
 			float playerAverageSpeed = player.GetComponent<PlayerControl> ().GetAverageSpeed ();
 
-			float adaptiveSpawnRate = Mathf.Round (14f / (playerAverageSpeed * 2));
+			float adaptiveSpawnRate = Mathf.Round (14f / ((playerAverageSpeed * 2) + 0.1f));
 
 			if ((stopWatch.ElapsedMilliseconds / 1000) % adaptiveSpawnRate == 0 && !stopRocks && playerAverageSpeed > 0.1) {
 				InstantiateRock ();

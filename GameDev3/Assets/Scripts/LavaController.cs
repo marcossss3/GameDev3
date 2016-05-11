@@ -34,7 +34,7 @@ public class LavaController : MonoBehaviour {
 
 		if (playerAverageSpeed > 0.1 && !gameController.GetComponent<GameController>().getVictory()) {
 			
-			rb.velocity = new Vector2 (rb.velocity.x, playerAverageSpeed / 14);
+			rb.velocity = new Vector2 (rb.velocity.x, (playerAverageSpeed / 18) + 0.02f);
 
 		}
 	
@@ -52,14 +52,14 @@ public class LavaController : MonoBehaviour {
 			for (int i = 0 ; i < platforms.childCount; i++) {
 
 				// Find the platform that is in front of the player
-				if (player.transform.position.x < platforms.GetChild(i).transform.position.x) {
+				if (player.transform.position.x < platforms.GetChild (i).transform.position.x) {
 					spawnPosition = new Vector2 (
 						platforms.GetChild (i - 1).transform.position.x, 
 						platforms.GetChild (i - 1).transform.position.y + 5f
 					);
 					break;
 				}
-
+					
 			}
 
 			pc.setKeysEnabled (false);

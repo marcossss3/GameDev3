@@ -20,11 +20,11 @@ public class SpawnTrigger : MonoBehaviour {
 	
 	}
 
-	void OnCollisionEnter2D(Collision2D collision) {
+	void OnTriggerEnter2D(Collider2D collider) {
 
-		if (collision.gameObject.tag == "Player" && !activated) {
+		if (collider.gameObject.tag == "Player" && !activated) {
 
-			float adaptiveSpawnLimit = Mathf.Round ((collision.gameObject.GetComponent<PlayerControl> ().getHealth () * 10) / 2);
+			float adaptiveSpawnLimit = Mathf.Round ((collider.gameObject.GetComponent<PlayerControl> ().getHealth () * 10) / 2);
 
 			spawnSound.Play ();
 
