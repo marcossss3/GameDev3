@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class LavaController : MonoBehaviour {
 
 	private Rigidbody2D rb;
 	private PlayerControl pc;
 	private Transform platforms;
+	private List<Transform> platformsList;
 
 	public AudioSource lavaSound;
 
@@ -17,7 +19,7 @@ public class LavaController : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D> ();
 
 		pc = player.GetComponent<PlayerControl> ();
-		platforms = ground.GetComponent<Transform> ();
+		platforms = ground.GetComponent<Transform> ();			
 
 	}
 	
@@ -52,12 +54,19 @@ public class LavaController : MonoBehaviour {
 			for (int i = 0 ; i < platforms.childCount; i++) {
 
 				// Find the platform that is in front of the player
-				if (player.transform.position.x < platforms.GetChild (i).transform.position.x) {
+				if (player.transform.position.x < platforms.GetChild (i).transform.position.x && i != 0) {
+
+					Debug.Log (i);
+
 					spawnPosition = new Vector2 (
 						platforms.GetChild (i - 1).transform.position.x, 
-						platforms.GetChild (i - 1).transform.position.y + 5f
+						platforms.GetChild (i - 1).transform.position.y + 2f
 					);
+
+					Debug.Log(platforms.GetChild (i - 1).transform.position.x );
+						
 					break;
+
 				}
 					
 			}
@@ -73,10 +82,15 @@ public class LavaController : MonoBehaviour {
 
 		}
 
+		if (collision.gameObject.tag == "Fragment") {
+
+			Destroy (collision.gameObject);
+
+		}
+
 		if (collision.gameObject.tag == "Rock") {
 
 			lavaSound.Play ();
-
 			Destroy (collision.gameObject);
 
 		}
