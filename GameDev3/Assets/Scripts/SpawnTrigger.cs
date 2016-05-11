@@ -4,10 +4,15 @@ using System.Collections;
 public class SpawnTrigger : MonoBehaviour {
 
 	public GameObject spawnArea, skeleton;
+	public AudioSource spawnSound;
+
+	private bool activated;
 
 	// Use this for initialization
 	void Start () {
 	
+		activated = false;
+
 	}
 	
 	// Update is called once per frame
@@ -17,15 +22,17 @@ public class SpawnTrigger : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collision) {
 
-		if (collision.gameObject.tag == "Player") {
+		if (collision.gameObject.tag == "Player" && !activated) {
 
 			float adaptiveSpawnLimit = Mathf.Round ((collision.gameObject.GetComponent<PlayerControl> ().getHealth () * 10) / 2);
+
+			spawnSound.Play ();
 
 			for (int i = 0; i < adaptiveSpawnLimit; i++) {
 				Instantiate (skeleton, new Vector2(spawnArea.transform.position.x - i, spawnArea.transform.position.y), spawnArea.transform.rotation);
 			}
-				
-			Destroy (gameObject);
+
+			activated = true;
 
 		}
 

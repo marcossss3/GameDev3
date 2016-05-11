@@ -7,6 +7,8 @@ public class LavaController : MonoBehaviour {
 	private PlayerControl pc;
 	private Transform platforms;
 
+	public AudioSource lavaSound;
+
 	public GameObject player, ground, gameController;
 
 	// Use this for initialization
@@ -42,6 +44,8 @@ public class LavaController : MonoBehaviour {
 
 		if (collision.gameObject.tag == "Player") {
 
+			lavaSound.Play ();
+
 			Vector2 spawnPosition = new Vector2();
 
 			// Loop through every platform
@@ -66,6 +70,14 @@ public class LavaController : MonoBehaviour {
 			transform.position = new Vector2 (transform.position.x, transform.position.y - 0.4f);
 
 			StartCoroutine(DisableKeysTemporarily (2));
+
+		}
+
+		if (collision.gameObject.tag == "Rock") {
+
+			lavaSound.Play ();
+
+			Destroy (collision.gameObject);
 
 		}
 
