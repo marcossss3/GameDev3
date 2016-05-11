@@ -4,6 +4,7 @@ using System.Collections;
 public class Skeleton : MonoBehaviour {
 
 	public Animator myAnimator;
+	public AudioSource attackSound, bonesSound;
 
 	private GameObject player;
 
@@ -35,6 +36,7 @@ public class Skeleton : MonoBehaviour {
 
 		if (collision.gameObject.tag == "Player" && !player.GetComponent<PlayerControl>().invincible) {
 
+			attackSound.Play ();
 			myAnimator.SetBool ("attack", true);
 			knockPlayer ();
 
@@ -61,6 +63,16 @@ public class Skeleton : MonoBehaviour {
 	public void knockPlayer(){
 		
 		StartCoroutine(player.GetComponent<PlayerControl>().knockBack ());
+
+	}
+
+	public void Defeat(){
+
+		bonesSound.Play ();
+
+		gameObject.GetComponent<Rigidbody2D> ().isKinematic = true;
+		gameObject.GetComponent<Animator> ().SetBool ("defeated", true);
+		gameObject.GetComponent<Skeleton> ().dead = true;
 
 	}
 		

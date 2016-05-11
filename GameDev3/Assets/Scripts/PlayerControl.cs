@@ -1,17 +1,15 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Diagnostics;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerControl : MonoBehaviour {
 
 	private Rigidbody2D rb;
 	private bool interact, keysEnabled;
 	public bool invincible;
-
-	public bool grounded;
-	public AudioSource pistolSound;
 
 	private float initialX = -16.0f;
 	private float invincibleTimeAfterHurt = 2;
@@ -20,10 +18,14 @@ public class PlayerControl : MonoBehaviour {
 	private float ammoShot, ammoHit;
 
 	private Stopwatch stopWatch;
+	private Queue<float> lastTenSeconds;
+	private float averageTenVelocity = 2.0f;
 
 
 	public Animator anim;
 	public GameObject bullet;
+	public bool grounded;
+	public AudioSource pistolSound, clickSound, ammoSound, jumpSound, hurtSound;
 
 	public float speed = 4.0f;
 	public float jumpPower = 350f;
@@ -40,11 +42,36 @@ public class PlayerControl : MonoBehaviour {
 		
 		rb = GetComponent<Rigidbody2D> ();
 
+		lastTenSeconds = new Queue<float> (10);
+
 		keysEnabled = true;
 		grounded = true;
 
 		stopWatch = new Stopwatch();
 		stopWatch.Start();
+
+		InvokeRepeating ("UpdateQueue", 0, 1.0f);
+
+	}
+
+	void UpdateQueue(){
+
+		float currentX = transform.position.x;
+
+		lastTenSeconds.Enqueue (currentX);
+
+		if ((stopWatch.ElapsedMilliseconds / 1000) > 9.0) {
+
+			float lastTenDistance = lastTenSeconds.Dequeue ();
+
+			float tenDistance = currentX - lastTenDistance;
+
+			if (tenDistance < 0)
+				averageTenVelocity = 0;
+			else
+				averageTenVelocity = tenDistance / 10f;
+
+		}
 
 	}
 
@@ -78,6 +105,7 @@ public class PlayerControl : MonoBehaviour {
 		
 		Movement(); //call the function every frame
 
+
 	}
 
 	void Movement() {
@@ -103,6 +131,7 @@ public class PlayerControl : MonoBehaviour {
 			}
 
 			if (Input.GetKeyDown (KeyCode.W) && grounded) {
+				jumpSound.Play ();
 				rb.AddForce (transform.up * jumpPower);
 				grounded = false;
 				anim.SetBool ("playerAirborne", true);
@@ -149,8 +178,16 @@ public class PlayerControl : MonoBehaviour {
 
 	public float GetAverageSpeed(){
 
+		/*
 		if (transform.position.x > (initialX + 0.5f) && stopWatch.ElapsedMilliseconds/1000 > 0.1f)
 			return (transform.position.x - (initialX)) / (stopWatch.ElapsedMilliseconds / 1000);
+		else
+			return 0;
+		*/
+
+		// Check that player has moved a certain distance from the starting position
+		if (transform.position.x > (initialX + 0.5f))
+			return averageTenVelocity;
 		else
 			return 0;
 
@@ -190,6 +227,7 @@ public class PlayerControl : MonoBehaviour {
 	}
 
 	public void Hurt(float healthPerCent, float hurtTime) {
+		hurtSound.Play ();
 		TriggerHurt (hurtTime);
 		Health = Health + healthPerCent;
 	}
@@ -212,16 +250,16 @@ public class PlayerControl : MonoBehaviour {
 
 	void Shoot (){
 		
-		if(ammo > 0){
+		if (ammo > 0) {
 
 			pistolSound.Play ();
 
 			var pos = Input.mousePosition;
 			pos.z = transform.position.z - Camera.main.transform.position.z;
-			pos = Camera.main.ScreenToWorldPoint(pos);
+			pos = Camera.main.ScreenToWorldPoint (pos);
 
-			var q = Quaternion.FromToRotation(Vector3.up, pos - transform.position);
-			GameObject go = Instantiate(bullet, transform.position, q) as GameObject;
+			var q = Quaternion.FromToRotation (Vector3.up, pos - transform.position);
+			GameObject go = Instantiate (bullet, transform.position, q) as GameObject;
 			Rigidbody2D gorb = go.GetComponent<Rigidbody2D> ();
 
 			gorb.AddForce (gorb.transform.up * 500);
@@ -230,6 +268,10 @@ public class PlayerControl : MonoBehaviour {
 
 			Ammo--;
 			ammoShot++;
+
+		} else {
+
+			clickSound.Play ();
 
 		}
 	}
@@ -279,6 +321,13 @@ public class PlayerControl : MonoBehaviour {
 	public float GetAccuracy(){
 
 		return ammoHit / ammoShot;
+
+	}
+
+	public void PickUpAmmo(int ammo){
+
+		ammoSound.Play ();
+		Ammo += (ammo);
 
 	}
 

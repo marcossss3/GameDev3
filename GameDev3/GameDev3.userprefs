@@ -1,13 +1,16 @@
-﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerControl.cs">
     <Files>
-      <File FileName="Assets\levelLoader.cs" Line="22" Column="23" />
-      <File FileName="Assets\Scripts\Skeleton.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerControl.cs" Line="255" Column="40" />
-      <File FileName="Assets\Scripts\ScreenFader.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\RockController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/SpawnTrigger.cs" Line="9" Column="14" />
+      <File FileName="Assets/Scripts/Ammo.cs" Line="21" Column="2" />
+      <File FileName="Assets/Scripts/PlayerControl.cs" Line="194" Column="21" />
+      <File FileName="Assets/ChestController.cs" Line="21" Column="48" />
+      <File FileName="Assets/Scripts/Skeleton.cs" Line="7" Column="44" />
+      <File FileName="Assets/Scripts/GameController.cs" Line="9" Column="40" />
+      <File FileName="Assets/Scripts/BulletController.cs" Line="40" Column="62" />
+      <File FileName="Assets/Scripts/JumpingPlat.cs" Line="26" Column="74" />
+      <File FileName="Assets/Scripts/LavaController.cs" Line="80" Column="35" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

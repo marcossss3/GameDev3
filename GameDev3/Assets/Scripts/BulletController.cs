@@ -37,9 +37,7 @@ public class BulletController : MonoBehaviour {
 
 			if (!collision.gameObject.GetComponent<Skeleton> ().dead) {
 
-				collision.gameObject.GetComponent<Rigidbody2D> ().isKinematic = true;
-				collision.gameObject.GetComponent<Animator> ().SetBool ("defeated", true);
-				collision.gameObject.GetComponent<Skeleton> ().dead = true;
+				collision.gameObject.GetComponent<Skeleton> ().Defeat ();
 
 				player.GetComponent<PlayerControl> ().HitSuccess ();
 
