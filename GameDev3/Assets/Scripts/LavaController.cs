@@ -62,9 +62,6 @@ public class LavaController : MonoBehaviour {
 						platforms.GetChild (i - 1).transform.position.x, 
 						platforms.GetChild (i - 1).transform.position.y + 2f
 					);
-
-					Debug.Log(platforms.GetChild (i - 1).transform.position.x );
-						
 					break;
 
 				}
