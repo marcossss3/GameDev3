@@ -80,7 +80,10 @@ public class GameController : MonoBehaviour {
 		yield return new WaitForSeconds (1f);
 
 		if(SceneManager.GetActiveScene().buildIndex == 1)
-			SceneManager.LoadScene ("IceLevel");
+			SceneManager.LoadScene ("CutScene");
+
+		if(SceneManager.GetActiveScene().buildIndex == 1)
+			SceneManager.LoadScene ("CutScene");
 
 		if(SceneManager.GetActiveScene().buildIndex == 2)
 			SceneManager.LoadScene ("Menu");
