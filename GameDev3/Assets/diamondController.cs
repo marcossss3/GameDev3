@@ -1,15 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class diamondController : ChestController {
+public class diamondController : MonoBehaviour {
 
-	void OnCollisionEnter2D(Collision2D collision) {
+	public GameObject gameController;
+	public AudioSource victorySound;
 
-		if (collision.gameObject.tag == "Player" && !gameController.GetComponent<GameController>().getVictory()) {
+	void OnTriggerEnter2D(Collider2D collider) {
+
+		if (collider.gameObject.tag == "Player" && !gameController.GetComponent<GameController>().getVictory()) {
+
+			gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 			victorySound.Play ();
 			gameController.GetComponent<GameController> ().setVictory (true);
-			Destroy (gameObject);
 			StartCoroutine (gameController.GetComponent<GameController>().LoadEnding ());
+
 		}
 
 	}

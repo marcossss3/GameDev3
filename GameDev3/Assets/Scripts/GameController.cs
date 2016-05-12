@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
-	public GameObject player, rock, chest;
+	public GameObject player, rock;
 	public bool rocksActivated;
 
 	private Stopwatch stopWatch;
@@ -54,7 +54,7 @@ public class GameController : MonoBehaviour {
 	void InstantiateRock () {
 
 		GameObject go = Instantiate(rock,
-			new Vector2 (player.transform.position.x + Random.Range(0.0f, 3.0f), player.transform.position.y + 3.5f),
+			new Vector2 (player.transform.position.x + Random.Range(0.0f, 3.0f), player.transform.position.y + 3.2f),
 									player.transform.rotation)
 			as GameObject;
 
@@ -76,17 +76,16 @@ public class GameController : MonoBehaviour {
 
 		victoryText.enabled = true;
 		yield return new WaitForSeconds(4);
-		float fadeTime = GameObject.Find ("GameController").GetComponent<ScreenFader> ().BeginFade (1);
+		GetComponent<ScreenFader> ().BeginFade (1);
 		yield return new WaitForSeconds (1f);
 
-		if(SceneManager.GetActiveScene().buildIndex == 1)
-			SceneManager.LoadScene ("CutScene");
+		if (SceneManager.GetActiveScene ().buildIndex == 1) {
+			SceneManager.LoadScene (3);
+		}
 
-		if(SceneManager.GetActiveScene().buildIndex == 1)
-			SceneManager.LoadScene ("CutScene");
-
-		if(SceneManager.GetActiveScene().buildIndex == 2)
-			SceneManager.LoadScene ("Menu");
+		if (SceneManager.GetActiveScene ().buildIndex == 2) {
+			SceneManager.LoadScene (0);
+		}
 
 	}
 

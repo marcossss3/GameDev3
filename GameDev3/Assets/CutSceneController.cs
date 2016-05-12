@@ -10,6 +10,8 @@ public class CutSceneController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+		player.GetComponent<PlayerControl> ().setKeysEnabled (false);
+
 		player.GetComponent<Animator> ().SetBool ("playerRunning", true);
 		jumpingPlat.GetComponent<JumpingPlat> ().setPower (16.0f);
 	
