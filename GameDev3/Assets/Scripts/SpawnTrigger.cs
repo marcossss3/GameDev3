@@ -24,7 +24,7 @@ public class SpawnTrigger : MonoBehaviour {
 
 		if (collider.gameObject.tag == "Player" && !activated) {
 
-			float adaptiveSpawnLimit = Mathf.Round ((collider.gameObject.GetComponent<PlayerControl> ().getHealth () * 10) / 2);
+			float adaptiveSpawnLimit = Mathf.Round ((collider.gameObject.GetComponent<PlayerControl> ().Health * 10) / 2);
 
 			spawnSound.Play ();
 

@@ -56,8 +56,6 @@ public class LavaController : MonoBehaviour {
 				// Find the platform that is in front of the player
 				if (player.transform.position.x < platforms.GetChild (i).transform.position.x && i != 0) {
 
-					Debug.Log (i);
-
 					spawnPosition = new Vector2 (
 						platforms.GetChild (i - 1).transform.position.x, 
 						platforms.GetChild (i - 1).transform.position.y + 2f

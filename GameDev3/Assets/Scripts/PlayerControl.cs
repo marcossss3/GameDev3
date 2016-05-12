@@ -80,12 +80,12 @@ public class PlayerControl : MonoBehaviour {
 			return health;
 		}
 		set {
-			if (health <= 0) {
+			if (health <= 0.00001) {
 				return;
 			}
 			health = value;
 			healthBar.fillAmount = value;
-			if (value <= 0) {
+			if (value <= 0.000001) {
 				Die ();
 			}
 		}
