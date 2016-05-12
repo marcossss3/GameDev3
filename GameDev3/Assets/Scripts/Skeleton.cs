@@ -34,7 +34,7 @@ public class Skeleton : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collision) {
 
-		if (collision.gameObject.tag == "Player" && !player.GetComponent<PlayerControl>().invincible) {
+		if (collision.gameObject.tag == "Player" && !player.GetComponent<PlayerControl>().invincible && !dead) {
 
 			attackSound.Play ();
 			myAnimator.SetBool ("attack", true);

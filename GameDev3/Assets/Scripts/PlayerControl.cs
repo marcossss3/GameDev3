@@ -303,7 +303,7 @@ public class PlayerControl : MonoBehaviour {
 
 	public IEnumerator returnToMenu(){
 		yield return new WaitForSeconds(3);
-		float fadeTime = GameObject.Find ("GameController").GetComponent<ScreenFader> ().BeginFade (1);
+		GameObject.Find ("GameController").GetComponent<ScreenFader> ().BeginFade (1);
 		yield return new WaitForSeconds (1f);
 		SceneManager.LoadScene ("Menu");
 	}

@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class levelLoader : MonoBehaviour {
+public class LevelLoader : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

@@ -78,7 +78,12 @@ public class GameController : MonoBehaviour {
 		yield return new WaitForSeconds(3);
 		float fadeTime = GameObject.Find ("GameController").GetComponent<ScreenFader> ().BeginFade (1);
 		yield return new WaitForSeconds (1f);
-		SceneManager.LoadScene ("Menu");
+
+		if(SceneManager.GetActiveScene().buildIndex == 1)
+			SceneManager.LoadScene ("IceLevel");
+
+		if(SceneManager.GetActiveScene().buildIndex == 2)
+			SceneManager.LoadScene ("Menu");
 
 	}
 

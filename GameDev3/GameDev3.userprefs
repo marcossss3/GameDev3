@@ -1,16 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerControl.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/LevelLoader.cs">
     <Files>
-      <File FileName="Assets/Scripts/SpawnTrigger.cs" Line="9" Column="14" />
-      <File FileName="Assets/Scripts/Ammo.cs" Line="21" Column="2" />
-      <File FileName="Assets/Scripts/PlayerControl.cs" Line="194" Column="21" />
-      <File FileName="Assets/ChestController.cs" Line="21" Column="48" />
-      <File FileName="Assets/Scripts/Skeleton.cs" Line="7" Column="44" />
-      <File FileName="Assets/Scripts/GameController.cs" Line="9" Column="40" />
-      <File FileName="Assets/Scripts/BulletController.cs" Line="40" Column="62" />
-      <File FileName="Assets/Scripts/JumpingPlat.cs" Line="26" Column="74" />
-      <File FileName="Assets/Scripts/LavaController.cs" Line="80" Column="35" />
+      <File FileName="Assets/Scripts/SpawnTrigger.cs" Line="35" Column="21" />
+      <File FileName="Assets/Scripts/LavaController.cs" Line="63" Column="58" />
+      <File FileName="Assets/Scripts/PlayerControl.cs" Line="306" Column="3" />
+      <File FileName="Assets/Scripts/GameController.cs" Line="23" Column="31" />
+      <File FileName="Assets/Scripts/LevelLoader.cs" Line="5" Column="15" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
