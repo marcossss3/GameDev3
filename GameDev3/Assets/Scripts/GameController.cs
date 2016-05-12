@@ -75,7 +75,7 @@ public class GameController : MonoBehaviour {
 	public IEnumerator LoadEnding(){
 
 		victoryText.enabled = true;
-		yield return new WaitForSeconds(3);
+		yield return new WaitForSeconds(4);
 		float fadeTime = GameObject.Find ("GameController").GetComponent<ScreenFader> ().BeginFade (1);
 		yield return new WaitForSeconds (1f);
 

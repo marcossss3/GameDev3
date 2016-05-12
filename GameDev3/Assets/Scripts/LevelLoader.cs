@@ -18,6 +18,12 @@ public class LevelLoader : MonoBehaviour {
 		SceneManager.LoadScene ("SceneMarcos");
 	}
 
+	public void loadLevel(int i){
+
+		SceneManager.LoadScene (i);
+
+	}
+
 	public void extiGame(){
 		Application.Quit ();
 	}
