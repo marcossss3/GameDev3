@@ -7,6 +7,8 @@ public class JumpingPlat : MonoBehaviour {
 	public Animator playerAnimator;
 	public AudioSource springSound;
 
+	private float power = 10.0f;
+
 	// Use this for initialization
 	void Start () {
 	}
@@ -24,15 +26,21 @@ public class JumpingPlat : MonoBehaviour {
 			springAnimator.SetTrigger("move");
 
 			collision.gameObject.GetComponent<PlayerControl> ().jumpSound.Play ();
-			collision.rigidbody.velocity = new Vector2 (collision.rigidbody.velocity.x, 10.0f);
+			collision.rigidbody.velocity = new Vector2 (collision.rigidbody.velocity.x, power);
 			//collision.rigidbody.AddForce (transform.up * 350);
 
 			//Animator playerAnimator = collision.gameObject.GetComponent<Animator> ();
 			collision.gameObject.GetComponent<PlayerControl>().grounded = false;
 			playerAnimator.SetBool ("playerFalling", false);
 			playerAnimator.SetBool ("playerAirborne", true);
-			
+
 		}
+
+	}
+
+	public void setPower(float p){
+
+		power = p;
 
 	}
 

@@ -8,7 +8,8 @@ public class diamondController : ChestController {
 		if (collision.gameObject.tag == "Player" && !gameController.GetComponent<GameController>().getVictory()) {
 			victorySound.Play ();
 			gameController.GetComponent<GameController> ().setVictory (true);
-			//StartCoroutine (gameController.GetComponent<GameController>().LoadEnding ());
+			Destroy (gameObject);
+			StartCoroutine (gameController.GetComponent<GameController>().LoadEnding ());
 		}
 
 	}
