@@ -54,7 +54,7 @@ public class GameController : MonoBehaviour {
 	void InstantiateRock () {
 
 		GameObject go = Instantiate(rock,
-			new Vector2 (player.transform.position.x + Random.Range(0.0f, 2.0f), player.transform.position.y + 3.0f),
+			new Vector2 (player.transform.position.x + Random.Range(0.0f, 3.0f), player.transform.position.y + 3.5f),
 									player.transform.rotation)
 			as GameObject;
 
